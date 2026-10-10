@@ -1,0 +1,100 @@
+[
+  {
+    "id": "123abc",
+    "name": "Smartphone X",
+    "image_url": "https://example.com/images/smartphone-x.jpg",
+    "description": "A high-end smartphone with OLED display.",
+    "price": 799.99,
+    "rating": 4.5,
+    "specifications": [
+      "128GB Storage",
+      "6.1-inch Display",
+      "Triple Camera",
+      "5G Support"
+    ]
+  },
+  {
+    "id": "456def",
+    "name": "Laptop Pro 15",
+    "image_url": "https://example.com/images/laptop-pro-15.jpg",
+    "description": "Powerful laptop with 15-inch screen.",
+    "price": 1299.99,
+    "rating": 4.7,
+    "specifications": [
+      "16GB RAM",
+      "512GB SSD",
+      "Intel i7",
+      "15.6-inch Display"
+    ]
+  },
+  {
+    "id": "789ghi",
+    "name": "Noise Cancelling Headphones ZX500",
+    "image_url": "https://example.com/images/headphones-zx500.jpg",
+    "description": "Wireless over-ear headphones with premium active noise cancellation and 30-hour battery life.",
+    "price": 199.99,
+    "rating": 4.6,
+    "specifications": [
+      "Bluetooth 5.2",
+      "Active Noise Cancellation",
+      "30-hour Battery",
+      "Quick Charge (10min = 5hr)"
+    ]
+  },
+  {
+    "id": "101jkl",
+    "name": "4K Smart TV 55” UltraVision",
+    "image_url": "https://example.com/images/ultravision-55.jpg",
+    "description": "55-inch 4K HDR Smart TV with integrated streaming apps and voice control.",
+    "price": 649.99,
+    "rating": 4.8,
+    "specifications": [
+      "55-inch 4K HDR Display",
+      "Dolby Vision",
+      "Wi-Fi & Ethernet",
+      "3 HDMI Ports"
+    ]
+  },
+  {
+    "id": "101jkm",
+    "name": "Smartwatch ProFit 3",
+    "image_url": "https://example.com/images/profit-3.jpg",
+    "description": "Fitness-focused smartwatch with heart rate tracking, GPS, and waterproof design.",
+    "price": 129.5,
+    "rating": 4.4,
+    "specifications": [
+      "Heart Rate & Sleep Tracking",
+      "Built-in GPS",
+      "Water Resistant (50m)",
+      "Battery Life: 10 days"
+    ]
+  },
+  {
+    "id": "456ddef",
+    "name": "Mechanical Keyboard RGB Pro",
+    "image_url": "https://example.com/images/mechkeyboard-pro.jpg",
+    "description": "High-performance mechanical keyboard with customizable RGB lighting and tactile switches.",
+    "price": 89.99,
+    "rating": 4.7,
+    "specifications": [
+      "Cherry MX Blue Switches",
+      "Full RGB Backlight",
+      "USB-C Connection",
+      "Aluminum Frame"
+    ]
+  },
+  {
+    "id": "789ghi2",
+    "name": "Robot Vacuum CleanMate S9",
+    "image_url": "https://example.com/images/cleanmate-s9.jpg",
+    "description": "Smart robot vacuum cleaner with mapping, app control, and automatic recharging.",
+    "price": 399.0,
+    "rating": 4.3,
+    "specifications": [
+      "Smart Mapping Technology",
+      "Self-Charging Dock",
+      "Wi-Fi & App Control",
+      "HEPA Filter"
+    ]
+  }
+]

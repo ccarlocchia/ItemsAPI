@@ -27,6 +27,32 @@ func TestPingRoute(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 	assert.Equal(t, `{"message":"pong"}`, w.Body.String())
 }
+
+func TestItemsRouteAllowsGitHubPagesCorsPreflight(t *testing.T) {
+	router := setupRouter()
+
+	req := httptest.NewRequest(http.MethodOptions, "/v1/api/items", nil)
+	req.Header.Set("Origin", "https://example.github.io")
+	req.Header.Set("Access-Control-Request-Method", http.MethodPost)
+	req.Header.Set("Access-Control-Request-Headers", "content-type")
+	rec := httptest.NewRecorder()
+	router.ServeHTTP(rec, req)
+
+	assert.Equal(t, http.StatusNoContent, rec.Code)
+	assert.Equal(t, "*", rec.Header().Get("Access-Control-Allow-Origin"))
+	assert.Equal(t, "POST, OPTIONS", rec.Header().Get("Access-Control-Allow-Methods"))
+	assert.Equal(t, "Content-Type", rec.Header().Get("Access-Control-Allow-Headers"))
+
+	req = httptest.NewRequest(http.MethodPost, "/v1/api/items", bytes.NewBufferString(`{"data":[{"id":"123abc"}]}`))
+	req.Header.Set("Origin", "https://example.github.io")
+	req.Header.Set("Content-Type", "application/json")
+	rec = httptest.NewRecorder()
+	router.ServeHTTP(rec, req)
+
+	assert.Equal(t, http.StatusOK, rec.Code)
+	assert.Equal(t, "*", rec.Header().Get("Access-Control-Allow-Origin"))
+}
+
 func setupIntegrationRouter(t *testing.T) *gin.Engine {
 	t.Helper()
 

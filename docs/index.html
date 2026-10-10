@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f5f1">
+    <meta name="description" content="Explore the Items API with sample data or your own API endpoint.">
+    <title>Items API Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Items API Playground home">
+          <span class="brand-mark" aria-hidden="true">i.</span>
+          <span>Items<span class="brand-muted">API</span></span>
+        </a>
+        <a class="source-link" href="https://github.com/ccarlocchia/ItemsAPI" target="_blank" rel="noreferrer">
+          View source <span aria-hidden="true">↗</span>
+        </a>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow"><span class="live-dot"></span> INTERACTIVE PLAYGROUND</p>
+          <h1 id="page-title">Your items,<br><span>within reach.</span></h1>
+          <p class="intro-copy">Explore the sample catalog, or connect to a running Items API and try a real request.</p>
+        </section>
+
+        <section class="workspace" aria-label="Items API playground">
+          <div class="request-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">01 / REQUEST</p>
+                <h2>Build your query</h2>
+              </div>
+              <span class="method-badge">POST</span>
+            </div>
+
+            <fieldset class="mode-picker">
+              <legend>Data source</legend>
+              <label class="mode-option">
+                <input type="radio" name="source" value="demo" checked>
+                <span>Sample data</span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="source" value="api">
+                <span>Live API</span>
+              </label>
+            </fieldset>
+
+            <div id="api-settings" class="api-settings" hidden>
+              <label for="api-url">API base URL</label>
+              <input id="api-url" type="url" inputmode="url" placeholder="https://your-api.example.com" autocomplete="url">
+              <p class="field-hint">The playground sends requests to <code>/v1/api/items</code>.</p>
+            </div>
+
+            <label class="field-label" for="item-ids">Item IDs</label>
+            <textarea id="item-ids" rows="3" placeholder="123abc, 456def" spellcheck="false"></textarea>
+            <p class="field-hint">Separate IDs with commas. Select an ID from the catalog below to add it.</p>
+
+            <button id="send-request" class="primary-button" type="button">
+              <span>Send request</span><span aria-hidden="true">↗</span>
+            </button>
+            <p id="request-status" class="request-status" role="status" aria-live="polite">Sample data is ready to explore.</p>
+          </div>
+
+          <div class="response-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">02 / RESPONSE</p>
+                <h2>Matching items <span id="result-count" class="count-badge">0</span></h2>
+              </div>
+              <span class="response-format">JSON → CARDS</span>
+            </div>
+            <div id="results" class="item-grid" aria-live="polite">
+              <div class="empty-state">
+                <span class="empty-icon" aria-hidden="true">{ }</span>
+                <p>Your matching items will appear here.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="catalog-section" aria-labelledby="catalog-title">
+          <div class="catalog-heading">
+            <div>
+              <p class="eyebrow">THE CATALOG</p>
+              <h2 id="catalog-title">Sample items <span id="catalog-count" class="count-badge">—</span></h2>
+            </div>
+            <p>Choose an item to add its ID to your request.</p>
+          </div>
+          <div id="catalog" class="catalog-grid">
+            <p class="catalog-message">Loading the sample catalog…</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Built for exploring the Items API</span>
+        <span>Go · Gin · GitHub Pages</span>
+      </footer>
+    </div>
+  </body>
+</html>

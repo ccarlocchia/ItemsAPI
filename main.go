@@ -15,6 +15,7 @@ import (
 
 func setupRouter() *gin.Engine {
 	r := gin.Default()
+	r.Use(corsMiddleware())
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -34,6 +35,21 @@ func setupRouter() *gin.Engine {
 	handler.SetupRoutes(r)
 
 	return r
+}
+
+func corsMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Methods", "POST, OPTIONS")
+		c.Header("Access-Control-Allow-Headers", "Content-Type")
+
+		if c.Request.Method == http.MethodOptions {
+			c.AbortWithStatus(http.StatusNoContent)
+			return
+		}
+
+		c.Next()
+	}
 }
 
 func getPort() string {

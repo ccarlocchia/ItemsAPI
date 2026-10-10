@@ -113,3 +113,14 @@ curl -X POST http://localhost:8080/v1/api/items \
 -H "Content-Type: application/json" \
 -d '{"data": [{"id": "123abc"}]}'
 ```
+
+## 🎛️ Visual playground
+
+The static playground in `docs/` can be published with GitHub Pages. It supports:
+
+- **Sample data** — try the catalog without running the Go API.
+- **Live API** — enter the base URL of a deployed API and send item IDs to `POST /v1/api/items`. The URL is saved in your browser.
+
+To publish it, open the repository's **Settings → Pages**, choose **Deploy from a branch**, select the `main` branch and the `/docs` folder, then save. GitHub Pages will provide the playground URL when deployment finishes.
+
+The live API must be hosted separately; GitHub Pages only serves static files. The API enables cross-origin requests for the playground. When testing locally, start the API with `go run main.go` and use `http://localhost:8081` as the API base URL. A browser may block an HTTP API when the playground is served over HTTPS, so use an HTTPS API URL for the published Pages site.
